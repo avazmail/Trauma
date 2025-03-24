@@ -1,0 +1,463 @@
+﻿:root {
+    --darkGreen: rgb(12,107,113);
+    --lightGreen: rgb(135,214,209);
+    --myGrey: rgb(198,203,209);
+    --darkGrey: rgb(122,107,113);
+    --veryDarkGreen: rgb(7, 62, 65);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "IBM Plex Sans Arabic", Tahoma;
+    direction: rtl;
+    background-color: var(--myGrey); /*: #f4f4f9;*/
+    max-width: 1600px;
+    margin: auto;
+    min-width: 400px;
+    color: var(--darkGrey);
+}
+a {
+    text-decoration: none;
+    color: var(--darkGreen);
+}
+/**************************/
+label {
+    display: block;
+    margin: 10px 0px;
+    margin-left: 10px;
+    font-size: 14px;
+    min-width: 70px;
+}
+
+    label > input[type="checkbox"] {
+        margin-right: 10px;
+    }
+
+    label > input[type="radio"] {
+        margin-right: 10px;
+    }
+
+select, input[type="text"], input[type="date"], input[type="time"], input[type="number"], input[type="radio"] {
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px 3px;
+    outline: none;
+    padding: 3px;
+    font-family: "IBM Plex Sans Arabic", Tahoma;
+    margin: 0px 0px 2px 3px;
+    color: var(--darkGrey);
+}
+
+button {
+    font-family: "IBM Plex Sans Arabic", Tahoma;
+    background: rgb(7,62,65);
+    background: linear-gradient(0deg, rgba(7,62,65,1) 0%, rgba(12,107,113,1) 51%, rgba(7,62,65,1) 100%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    width:200px;
+  
+    
+}
+
+
+    button:hover {
+        background-color: red;
+    }
+
+input[type="checkbox"] {
+    margin-bottom: -5px;
+    margin-left: 2px;
+}
+
+input[type="radio"] {
+    margin-left: 2px;
+}
+
+
+select, input[type="text"] {
+    min-width: 70px;
+}
+
+input[type="number"] {
+    width: 40px;
+}
+
+select:focus, input:focus {
+    border-color: #007bff;
+}
+.description {
+    font-size: 10px;
+}
+
+/*****************/
+
+#patientInfo {
+    display: block;
+    padding-top: 10px;
+    font-weight: bold;
+    color:var(--darkGreen);
+}
+#fixedPart {
+    width: 100%;
+    max-width: 1600px;
+    position: fixed; /* ثابت نگه‌داشتن تب‌ها */
+    top: 0; /* فاصله از بالای صفحه */
+    background-color: white; /* رنگ پس‌زمینه */
+    z-index: 10; /* اطمینان از اینکه در بالای سایر محتوای صفحه قرار گیرد */
+    text-align:center;
+}
+
+.linkButton {
+    background: rgb(7,62,65);
+    background: linear-gradient(0deg, rgba(7,62,65,1) 0%, rgba(12,107,113,1) 51%, rgba(7,62,65,1) 100%);
+    color: white;
+    cursor: pointer;
+    transition: background-color 1s ease;
+    display: block;
+    margin: 10px 10px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+.expanding-section {
+     color: white;
+    cursor: pointer;
+    transition: background-color 1s ease;
+    display: block;
+    margin: 200px 10px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+.innerExpanding-section {
+    transition: color 1s ease;
+    color: red;
+    cursor: pointer;
+    text-align: right;
+    margin: 10px 5px;
+}
+
+
+.expanding-section:hover {
+    background-color: var(--lightGreen);
+}
+.innerExpanding-section:hover {
+    color: var(--lightGreen);
+}
+
+
+.tab {
+    width: 100%;
+    padding: 0px 5px 0px 3px;
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px dotted var(--myGrey);
+}
+.tab button {
+     flex: 1;
+}
+
+.tablinks {
+
+    color: white;
+    padding: 5px 5px;
+    cursor: pointer;
+    transition: background-color 1s ease;
+    border-radius: 8px 8px 0px 0px;
+    /*    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.1);*/
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    vertical-align: middle;
+    border: 2px solid var(--myGrey);
+    display: inline-block;
+/*    background: rgb(66,59,62);*/
+    background: linear-gradient(0deg, rgba(66,59,62,1) 0%, rgba(122,107,113,1) 25%, rgba(150,135,142,1) 49%, rgba(122,107,113,1) 80%, rgba(57,51,53,1) 100%);
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.active {
+    /*background-color:var(--darkGreen);*/
+    background: rgb(7,62,65);
+    background: linear-gradient(0deg, rgba(7,62,65,1) 0%, rgba(12,107,113,1) 51%, rgba(7,62,65,1) 100%);
+}
+.tabcontent {
+    /*padding-top: 90px;
+    position: relative;*/
+
+    display: none;
+    overflow-y: auto; /* Allow scrolling */
+    
+    min-height: 500px; /* Set a fixed height for scrolling */ 
+    padding-top: 90px;
+    margin-bottom:10px;
+    width:100%;
+
+    /*position: relative;*/
+    background-color:white;
+    
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+
+/***************/
+#sectionInitialInfo {
+    padding-right: 70px;
+    /*border: 3px solid var(--darkGreen);*/
+    margin:0;    
+}
+
+.linkButton, .expanding-section {
+    background: rgb(7,62,65);
+    background: linear-gradient(0deg, rgba(7,62,65,1) 0%, rgba(12,107,113,1) 51%, rgba(7,62,65,1) 100%);
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    transition: background-color 1s ease;
+    display: block;
+    margin: 20px 20px 0px 20px;
+    border-radius: 8px 8px 0px 0px;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.innerExpanding-section {
+    transition: color 1s ease;
+    color: var(--darkGreen);
+    cursor: pointer;
+    text-align: right;
+    margin: 10px 5px;
+}
+
+
+.expanding-section:hover {
+    background-color: var(--lightGreen);
+}
+
+.innerExpanding-section:hover {
+    color: var(--lightGreen);
+}
+
+/******************/
+
+.content {
+    border-radius: 5px 5px 5px 5px;
+    padding: 5px 10px;
+    display: none;
+    text-align: right;
+    background-color: white;
+    border: 1px dotted rgb(180, 103, 134);
+    margin-bottom:50px;
+    margin-top:-35px;
+    padding-top:30px;
+    color:rgb(122,107,113);
+}
+
+.content2 { /*outer*/
+
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: block;
+    text-align: right;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    height: 80vh;
+    border: 3px solid var(--darkGreen);
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-top:20px;
+    min-height:400px;
+}
+
+
+/* Webkit scrollbar style */
+    .content2::-webkit-scrollbar {
+        width: 8px; /* Width of the scrollbar */
+    }
+
+    .content2::-webkit-scrollbar-thumb {
+        /*background-color: #ff6347;*/ /* Color of the scrollbar thumb */
+        border-radius: 10px; /* Rounded corners */
+    }
+
+    .content2::-webkit-scrollbar-track {
+        background: #f0f0f0; /* Color of the scrollbar track */
+
+    }
+
+/* Firefox scrollbar style */
+.content2 {
+    scrollbar-width: thin; /* Makes scrollbar thin */
+    scrollbar-color: #ff6347 #f0f0f0; /* thumb and track color */
+}  
+
+
+.content3 { /*out outer*/
+    background-color: white;
+    margin-left: 50px;
+    margin-right: 50px;
+    display: block;
+    text-align: right;
+    padding-bottom: 50px;
+    padding-top: 0px;
+    min-height: 100vh;
+
+}
+legend {
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    
+    margin-top:5px;
+    color: var(--myGrey);
+  
+}
+
+.innerLegend {
+    color: var(--darkGreen);
+}
+
+
+
+fieldset {
+    display: block;
+    margin: 0px 10px 10px 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: none;
+    border-right: 1px solid rgb(198,203,209);
+    border-top: 1px solid rgb(198,203,209);
+    border-bottom:none;
+    border-left:none;
+}
+
+.innerFieldSet {
+    /*border: 1px dotted var(--lightGreen);*/
+    margin: 0px 50px 50px 10px;
+    padding:0;
+    /*color:var(--darkGreen);*/
+    border-style:dotted;
+}
+.subFieldSet {
+    /*border: 1px dotted var(--lightGreen);*/
+    margin: 10px 50px 20px 0px;
+    padding: 0px 5px 3px 5px;
+    color:var(--darkGrey);
+    border-style: dotted;
+    border-color:var(--myGrey)
+}
+
+
+
+.parent {
+    display: flex;
+}
+
+.yes {
+    color: green; /* رنگ برای "دارد" */
+    margin-left: 7px;
+}
+
+.no {
+    color: red; /* رنگ برای "ندارد" */
+    margin-left: 7px;
+}
+
+.item {
+    display: inline-block;
+    min-width: 50px;
+}
+
+
+@media only screen and (max-width: 600px) {
+    #fixedPart {
+        width: 100%;
+        max-width: 1000px;
+        position: fixed; /* ثابت نگه‌داشتن تب‌ها */
+        top: 0; /* فاصله از بالای صفحه */
+        background-color: white; /* رنگ پس‌زمینه */
+        z-index: 1000; /* اطمینان از اینکه در بالای سایر محتوای صفحه قرار گیرد */
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    .tab {
+        width: 100%;
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 2px dotted var(--myGrey);
+    }
+    .parent {
+        display: initial;
+    }
+    .content2 { /*outer*/
+
+        background-color: white;
+        padding-left: 2px;
+        padding-right: 2px;
+        display: block;
+        text-align: right;
+        padding-bottom: 50px;
+        padding-top: 20px;
+        /*    min-height: 100vh;*/
+        border: 3px solid var(--darkGreen);
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    .content3 { /*out outer*/
+        background-color: white;
+        padding-left: 2px;
+        padding-right: 2px;
+        display: block;
+        text-align: right;
+        padding-bottom: 50px;
+        padding-top: 20px;
+        min-height: 100vh;
+    }
+    
+    .linkButton, .expanding-section {
+        background: rgb(7,62,65);
+        background: linear-gradient(0deg, rgba(7,62,65,1) 0%, rgba(12,107,113,1) 51%, rgba(7,62,65,1) 100%);
+        color: white;
+        cursor: pointer;
+        transition: background-color 1s ease;
+        display: block;
+        margin: 20px 0px 0px 0px;
+        border-radius: 25px 25px 0px 0px;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+        vertical-align: middle;
+       
+    }
+    .innerFieldSet {
+        /*border: 1px dotted var(--lightGreen);*/
+        margin: 0px 20px 30px 2px;
+        padding: 0;
+        /*color:var(--darkGreen);*/
+        border-style: dotted;
+    }
+    input[type="checkbox"] {
+        margin-right: 3px;
+    }
+}
+

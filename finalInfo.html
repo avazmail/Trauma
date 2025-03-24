@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday-jalali/css/pikaday.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday-jalali/css/pikaday.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/css/persian-datepicker.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/persian-date/dist/persian-date.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/js/persian-datepicker.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Noto+Sans+Arabic:wght@100..900&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <title>تروما</title>
+    <style>
+        :root {
+            --darkGreen: rgb(12,107,113);
+            --lightGreen: rgb(135,214,209);
+            --myGrey: rgb(198,203,209);
+            --darkGrey: rgb(122,107,113);
+            --veryDarkGreen: rgb(7, 62, 65);
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--darkGreen);
+        }
+
+        body {
+            font-family: "IBM Plex Sans Arabic", Tahoma;
+            direction: rtl;
+            background-color: var(--myGrey);
+            
+            margin: auto;
+            min-width: 400px;
+            height:100vh;
+            color: var(--darkGrey);
+        }
+        #fixedPart {
+            text-align: center;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+            margin: auto;
+            height: 15vh;
+            background-color:white;
+        }
+
+        .topInfo {
+            display: flex;
+            width: 100%;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+        }
+
+            .topInfo div {
+                flex: 1;
+            }
+
+        #homeIcon {
+            font-size: 40px;
+            float: left;
+            padding: 0px 30px 10px 30px;
+        }
+
+        .tabs {
+            display: flex;
+            width: 100%;
+        }
+
+        .tab-headers {
+            color: white;
+            padding: 15px 0px;
+            cursor: pointer;
+            background-color: var(--darkGreen);
+            background: linear-gradient(0deg, var(--darkGreen) 0%, var(--veryDarkGreen) 51%, var(--darkGreen) 100%);
+            margin: 1px;
+            flex: 1;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 15px 15px 0px 0px;
+        }
+
+            .tab-headers.active {
+                background: rgb(7,62,65);
+                background: linear-gradient(0deg, orange 0%, #fcc869 51%,orange 100%);
+            }
+
+        .tab-content {
+            display: none;
+            height: 100vh;
+            overflow: hidden;
+            
+            overflow-y:auto;
+           
+        }
+
+            .tab-content.active {
+                display: block;
+            }
+
+        .sidebarTab1, .sidebarTab2, .sidebarTab3 {
+            position: fixed;
+            top: 15vh;
+            right: 0;
+            width: 120px;
+        }
+
+        .menu-item {
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            background-color: var(--myGrey);
+            text-align: center;
+            border-bottom: 2px solid white;
+        }
+
+            .menu-item.active {
+                background: rgb(7,62,65);
+                background: linear-gradient(0deg, orange 0%, #fcc869 51%,orange 100%);
+            }
+
+        .tabSection {
+            display: none;
+            padding: 10px;
+            height:100vh;
+            background-color: white;
+            padding-top:30px;
+        }
+
+            .tabSection.active {
+                display: block;
+            }
+
+        #current-path {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 10px;
+        }
+
+
+        /***************form style*/
+        /*form style*/
+        label {
+            display: block;
+            margin: 10px 0px;
+            margin-left: 10px;
+            font-size: 14px;
+            min-width: 70px;
+        }
+
+            label > input[type="checkbox"] {
+                margin-right: 10px;
+            }
+
+            label > input[type="radio"] {
+                margin-right: 10px;
+            }
+
+        select, input[type="text"], input[type="date"], input[type="time"], input[type="number"], input[type="radio"] {
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-radius: 2px 3px;
+            outline: none;
+            padding: 3px;
+            font-family: "IBM Plex Sans Arabic", Tahoma;
+            margin: 0px 0px 2px 3px;
+            color: var(--darkGrey);
+        }
+
+        button {
+            font-family: "IBM Plex Sans Arabic", Tahoma;
+            background: rgb(7,62,65);
+            background: linear-gradient(0deg, rgba(7,62,65,1) 0%, rgba(12,107,113,1) 51%, rgba(7,62,65,1) 100%);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+
+            button:hover {
+                background-color: red;
+            }
+
+        input[type="checkbox"] {
+            margin-bottom: -5px;
+            margin-left: 2px;
+        }
+
+        input[type="radio"] {
+            margin-left: 2px;
+        }
+
+
+        select, input[type="text"] {
+            min-width: 70px;
+        }
+
+        input[type="number"] {
+            width: 50px;
+        }
+
+        select:focus, input:focus {
+            border-color: #007bff;
+        }
+
+        .description {
+            font-size: 10px;
+        }
+
+        fieldset {
+            display: block;
+            margin: 20px 10px 10px 10px;
+            padding-bottom: 10px;
+            padding-right: 10px;
+            border-radius: 5px;
+            padding-left: 5px;
+            border: none;
+            border: 1px solid rgb(198,203,209);
+            /*border-top: 1px solid rgb(198,203,209);*/
+            /*  border-bottom: none;
+            border-left: none;*/
+        }
+
+        legend {
+            color: var(--darkGreen);
+        }
+
+        .flexBox {
+            display: flex;
+        }
+
+        /*.row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);*/ /* ۵ ستون مساوی */
+        /*gap: 10px;*/ /* فاصله بین لیبل‌ها */
+        /*direction: rtl;*/ /* شروع از سمت راست */
+        /*text-align: right;*/ /* تراز متن به سمت راست */
+        /*}*/
+        .row {
+            display: grid;
+            grid-template-columns: repeat(8, minmax(130px, 1fr)); /* ۵ ستون */
+            /*grid-template-columns: repeat(5, 1fr);*/
+            /*grid-auto-flow: column;*/ /* پر کردن ستون‌ها از راست */
+            gap: 10px;
+            direction: rtl;
+            justify-content: start;
+            text-align: right;
+        }
+
+            .row label {
+                min-width: 150px;
+                display: block;
+                /*white-space: nowrap;*/ /* جلوگیری از شکستن متن */
+                /*  overflow: hidden;*/
+                /*text-overflow: ellipsis;*/ /* در صورت خیلی طولانی شدن، متن سه‌نقطه‌ای شود */
+            }
+
+        .title {
+            left: 38%;
+            color: #ee8513;
+            position: fixed;
+            top: 120px;
+        }
+
+        table {
+            border-radius: 10px;
+            border-collapse: separate; /* اجازه فاصله بین ردیف‌ها */
+            border-spacing: 0 1px; /* فاصله 10px بین ردیف‌ها */
+        }
+
+        th {
+            border: 1px solid var(--myGrey);
+            padding: 10px;
+            text-align: center;
+            color: var(--darkGreen);
+            font-size: 12px;
+            border-radius: 0px 20px 20px 0px;
+            white-space: nowrap;
+        }
+
+        td {
+            border: 1px solid var(--myGrey);
+            border-right: 1px solid var(--myGrey);
+            border-left: 1px solid var(--myGrey);
+            padding: 20px 0px;
+            border-radius: 20px 0px 0px 20px;
+        }
+
+
+        .hidden {
+            display: none;
+        }
+
+
+
+        /*final page styles*/
+        .content2 { /*outer*/
+
+            padding-left: 20px;
+            display: block;
+            text-align: right;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .innerExpanding-section {
+            transition: color 1s ease;
+            color: var(--darkGreen);
+            cursor: pointer;
+            text-align: right;
+            margin: 10px 5px;
+        }
+
+        .tabContainer {
+            padding-right: 120px;
+            padding-top:120px;
+            float:right;
+            width:100%;
+          
+            
+        }
+        /**************************/
+    </style>
+</head>
+<body>
+    <div id="fixedPart">
+        <div class="topInfo">
+            <div></div>
+            <div>
+                <p id="patientInfo"></p>
+            </div>       
+
+            <div>
+                <p id="current-path">مسیر فعلی: </p>
+            </div>
+            <div>
+                <a href="default.html"><i class="fa fa-home" id="homeIcon"></i></a>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <div class="tab-headers" data-tab="tab1">Head</div>
+            <div class="tab-headers" data-tab="tab2">Face</div>
+            <div class="tab-headers" data-tab="tab3">Neck</div>
+            <div class="tab-headers" data-tab="tab4">Thorax</div>
+            <div class="tab-headers" data-tab="tab5">Abdomen<p class="description">Lumbar,Perineum</p></div>
+            <div class="tab-headers" data-tab="tab6">Upper&nbsp;Extremity</div>
+            <div class="tab-headers" data-tab="tab7">Lower&nbsp;Extremity<p class="description">,Pelvis&nbsp;and&nbsp;Buttocks</p></div>
+            <div class="tab-headers" data-tab="tab8">Burns</div>
+        </div>
+    </div>
+
+    <!-- تب 1 -->
+    <div class="tab-content" id="tab1">
+        <div class="sidebarTab1">
+            <div class="menu-item" data-tab="tab1-1">آسیب های کلی</div>
+            <div class="menu-item" data-tab="tab1-2">آسیب عروق</div>
+            <div class="menu-item" data-tab="tab1-3">آسیب عصب</div>
+            <div class="menu-item" data-tab="tab1-3">آسیب ارگان های داخل جمجمه</div>
+            <div class="menu-item" data-tab="tab1-3">آسیب استخوانی</div>
+        </div>
+        <div class="tabContainer">
+            <div class="tabSection" id="tab1-1">
+                <!-- 110099.1 -->
+                <div class="innerExpanding-section" onclick="toggleSection('t110099.1')">
+                    <input type="checkbox" id="110099.1" name="110099.1">
+                    110099.1 Scalp abrasion, laceration, contusion, sub galeal hematoma
+                </div>
+                <fieldset class="innerFieldSet" id="t110099.1" style="display: none;">
+                    <legend>درمانهای انجام شده</legend>
+                    <label><input type="checkbox" name="110099.1_1" />  شستشو و دبریدمان زخم و درآوردن اجسام خارجی </label>
+                    <label><input type="checkbox" name="110099.1_2" />  اکسپلوراسیون زخم‌</label>
+                    <label><input type="checkbox" name="110099.1_3" />  ترميم ساده زخم‌</label>
+                    <label><input type="checkbox" name="110099.1_4" />  ترمیم زخم همراه با جابجایی یا انتقال بافت هر ناحیه از بدن(فلپ)</label>
+                </fieldset>
+
+                <!-- 116000.3 -->
+                <div class="innerExpanding-section" onclick="toggleSection('t116000.3')">
+                    <input type="checkbox" id="116000.3" name="116000.3">
+                    116000.3 Penetrating Injury to Skull
+                </div>
+                <fieldset id="t116000.3" class="innerFieldSet" style="display: none;">
+                    <legend>درمانهای انجام شده</legend>
+                    <label><input type="checkbox" name="116000.3_1" />  شستشو و دبریدمان زخم و درآوردن اجسام خارجی </label>
+                    <label><input type="checkbox" name="116000.3_2" />  اکسپلوراسیون زخم‌</label>
+                    <label><input type="checkbox" name="116000.3_3" />  ترميم ساده زخم‌</label>
+                    <label><input type="checkbox" name="116000.3_4" />  ترمیم زخم همراه با جابجایی یا انتقال بافت هر ناحیه از بدن(فلپ)</label>
+                </fieldset>
+                <!-- 113000.6 -->
+                <div class="innerExpanding-section" onclick="toggleSection('t113000.6')">
+                    <input type="checkbox" id="113000.6" name="113000.6">
+                    113000.6 Crush Injury (Must involve massive destruction of skull, brain and intracranial contents)
+                </div>
+                <fieldset id="t113000.6" class="innerFieldSet" style="display: none;">
+                    <legend>درمانهای انجام شده</legend>
+                    <label><input type="checkbox" name="113000.6_1" />  شستشو و دبریدمان زخم و درآوردن اجسام خارجی </label>
+                    <label><input type="checkbox" name="113000.6_2" /> اکسپلوراسیون زخم‌</label>
+                    <label><input type="checkbox" name="113000.6_3" />  ترميم ساده زخم‌</label>
+                    <label><input type="checkbox" name="113000.6_4" />  ترمیم زخم همراه با جابجایی یا انتقال بافت هر ناحیه از بدن(فلپ)</label>
+                </fieldset>
+                <div class="innerExpanding-section">
+                    <label><input type="checkbox" id="161000.1" name="161000.1"> 161000.1 Cerebral Concussion</label>
+                    <label><input type="checkbox" id="161007.4" name="161007.4"> 161007.4 Diffuse Axonal Injury</label>
+                    <label><input type="checkbox" id="110009.1" name="110009.1"> 110009.1 Head Injury NFS involving only headache</label>
+                </div>
+            </div>
+                <div class="tabSection" id="tab1-2">محتوای منو 1 - بخش 2</div>
+                <div class="tabSection" id="tab1-3">محتوای منو 1 - بخش 3</div>
+            </div>
+    </div>
+
+    <!-- تب 2 -->
+    <div class="tab-content" id="tab2">
+        <div class="sidebarTab2">
+            <div class="menu-item" data-tab="tab2-1">آسیب های کلی</div>
+            <div class="menu-item" data-tab="tab2-2">آسیب عروق</div>
+            <div class="menu-item" data-tab="tab2-3">آسیب عصب</div>
+            <div class="menu-item" data-tab="tab2-3">آسیب ارگان های صورت</div>
+            <div class="menu-item" data-tab="tab2-3">آسیب استخوانی</div>
+        </div>
+        <div class="tabContainer">
+            <div class="tabSection" id="tab2-1">محتوای منو 2 - بخش 1</div>
+            <div class="tabSection" id="tab2-2">محتوای منو 2 - بخش 2</div>
+        </div>
+    </div>
+
+    <!-- تب 3 -->
+    <div class="tab-content" id="tab3">
+        <div class="sidebarTab3">
+            <div class="menu-item" data-tab="tab3-1">آسیب های کلی</div>
+            <div class="menu-item" data-tab="tab3-2">آسیب عروق</div>
+            <div class="menu-item" data-tab="tab3-3">آسیب عصب</div>
+            <div class="menu-item" data-tab="tab3-3">آسیب ارگان های گردن</div>
+            <div class="menu-item" data-tab="tab3-3">آسیب اسکلتی گردن</div>
+        </div>
+        <div class="tabContainer">
+            <div class="tabSection" id="tab3-1">محتوای منو 3 - بخش 1</div>
+            <div class="tabSection" id="tab3-2">محتوای منو 3 - بخش 2</div>
+        </div>
+    </div>
+
+    <script>
+        let tabHeaders = document.querySelectorAll(".tab-headers");
+        let menuItems = document.querySelectorAll(".menu-item");
+        let tabContents = document.querySelectorAll(".tab-content");
+        let currentPath = document.getElementById("current-path");
+        let menuStates = {}; // ذخیره وضعیت منوهای فعال در هر تب
+
+        tabHeaders.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabHeaders.forEach(header => header.classList.remove("active"));
+                tab.classList.add("active");
+
+                tabContents.forEach(content => content.classList.remove("active"));
+                document.getElementById(tab.getAttribute("data-tab")).classList.add("active");
+
+                currentPath.textContent = "مسیر فعلی: " + tab.textContent;
+
+                // بارگذاری وضعیت قبلی منو برای تب فعال
+                let activeTab = tab.getAttribute("data-tab");
+                let lastMenu = menuStates[activeTab] || document.querySelector(`#${activeTab} .menu-item`).getAttribute("data-tab");
+                setActiveMenu(lastMenu);
+            });
+        });
+
+        menuItems.forEach(menu => {
+            menu.addEventListener("click", () => {
+                menuItems.forEach(item => item.classList.remove("active"));
+                menu.classList.add("active");
+
+                let menuId = menu.getAttribute("data-tab");
+                let tabSections = document.querySelectorAll(".tabSection");
+                tabSections.forEach(section => section.classList.remove("active"));
+                document.getElementById(menuId).classList.add("active");
+
+                let activeTab = document.querySelector(".tab-headers.active").getAttribute("data-tab");
+                menuStates[activeTab] = menuId;
+
+                let activeTabName = document.querySelector(".tab-headers.active").textContent;
+                currentPath.textContent = "مسیر فعلی: " + activeTabName + " > " + menu.textContent;
+            });
+        });
+
+        // تنظیم وضعیت پیش‌فرض
+        tabHeaders[0].click();
+
+        function setActiveMenu(menuId) {
+            let menu = document.querySelector(`.menu-item[data-tab="${menuId}"]`);
+            if (menu) {
+                menu.classList.add("active");
+                let sectionId = menu.getAttribute("data-tab");
+                let sections = document.querySelectorAll(".tabSection");
+                sections.forEach(section => section.classList.remove("active"));
+                document.getElementById(sectionId).classList.add("active");
+            }
+        }
+    </script>
+</body>
+</html>
