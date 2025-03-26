@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,7 +48,7 @@
         body {
             font-family: "IBM Plex Sans Arabic", Tahoma;
             direction: rtl;
-            background-color: var(--myGrey); /*: #f4f4f9;*/
+            background-color: white; /*: #f4f4f9;*/
             max-width: 1600px;
             margin: auto;
             min-width: 400px;
@@ -118,8 +118,8 @@
             background-color: white;
             padding: 10px 20px;
             width: 100%;
-            height: 88vh;
-            overflow: hidden;
+           /* min-height: 120vh;*/
+            /*overflow: hidden;*/
         }
 
         .tab-content {
@@ -142,12 +142,12 @@
 
         .question {
             display: none;
-            min-height: 500px;
+           /* min-height: 500px;*/
         }
 
         .questionE {
             display: none;
-            min-height: 500px;
+            /*min-height: 500px;*/
         }
         /*************/
         .tab3-container {
@@ -214,7 +214,7 @@
                 margin-right: 10px;
             }
 
-        select, input[type="text"], input[type="date"], input[type="time"], input[type="number"], input[type="radio"] {
+        select, input[type="text"], input[type="date"], input[type="time"], input[type="radio"] {
             border: none;
             border-bottom: 1px solid rgba(0,0,0,0.1);
             border-radius: 2px 3px;
@@ -222,6 +222,16 @@
             padding: 3px;
             font-family: "IBM Plex Sans Arabic", Tahoma;
             margin: 0px 0px 2px 3px;
+            color: var(--darkGrey);
+        }
+        input[type="number"] {
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            border-radius: 2px 3px;
+            outline: none;
+            padding: 0px;
+            font-family: "IBM Plex Sans Arabic", Tahoma;
+            margin: 0px 0px 0px 3px;
             color: var(--darkGrey);
         }
 
@@ -296,7 +306,7 @@
         /*}*/
         .row8 {
             display: grid;
-            grid-template-columns: repeat(8, minmax(100px, 1fr)); /* ۵ ستون */
+            grid-template-columns: repeat(8, minmax(90px, 1fr)); /* ۵ ستون */
             /*grid-template-columns: repeat(5, 1fr);*/
             /*grid-auto-flow: column;*/ /* پر کردن ستون‌ها از راست */
             gap: 10px;
@@ -307,7 +317,7 @@
 
         .row6 {
             display: grid;
-            grid-template-columns: repeat(6, minmax(160px, 1fr)); /* ۵ ستون */
+            grid-template-columns: repeat(6, minmax(140px, 1fr)); /* ۵ ستون */
             /*grid-template-columns: repeat(5, 1fr);*/
             /*grid-auto-flow: column;*/ /* پر کردن ستون‌ها از راست */
             gap: 10px;
@@ -328,7 +338,7 @@
         }
 
             .row label {
-                min-width: 150px;
+                min-width: 100px;
                 display: block;
                 /*white-space: nowrap;*/ /* جلوگیری از شکستن متن */
                 /*  overflow: hidden;*/
@@ -346,12 +356,12 @@
             border-radius: 10px;
             border-collapse: separate;
             border-spacing: 0 1px; /* فاصله 10px بین ردیف‌ها */
-            margin-top: 15px;
+            margin-top: 5px;
         }
 
         th {
             border: 1px solid var(--myGrey);
-            padding: 5px;
+            padding: 0px;
             text-align: center;
             color: var(--darkGreen);
             font-size: 12px;
@@ -364,7 +374,7 @@
             border: 0px solid var(--myGrey);
             border-right: 1px solid var(--myGrey);
             border-bottom: 1px solid var(--myGrey);
-            padding: 5px 0px;
+            padding: 0px ;
             /*border-radius: 20px 0px 0px 20px;*/
         }
         .damagedSecTbl {
@@ -377,7 +387,7 @@
             padding: 0px 0px;
         }
         .damagedSecTbl tr th {
-            padding: 3px 0px;
+            padding: 0px 0px;
             min-width:100px;
             border-right:none;
             border-top:none;
@@ -424,7 +434,7 @@
             </div>
 
             <div>
-                <a href="index.html"><i class="fa fa-home" id="homeIcon"></i></a>
+                <a href="default.html"><i class="fa fa-home" id="homeIcon"></i></a>
             </div>
 
         </div>
@@ -865,320 +875,321 @@
                 </fieldset>
             </div>
             <div class="question" id="q5">
-                <center>
-                    <h3>اعضای آسیب دیده</h3>
-                </center>
-                <table class="damagedSecTbl">
-                    <tr>
-                        <th rowspan="7" class="verticalTH">سر و گردن</th>
-                        <th>جمجمه</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueScalp">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralScalp">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneScalp">
-                                        ساختار استخوانی
-                                    </label>
+                <fieldset>
+                    <legend>اعضای آسیب دیده</legend>
+
+                    <table class="damagedSecTbl">
+                        <tr>
+                            <th rowspan="7" class="verticalTH">سر و گردن</th>
+                            <th>جمجمه</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueScalp">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralScalp">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneScalp">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>چشم</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueEye">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralEye">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneEye">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>چشم</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueEye">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralEye">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneEye">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>گوش</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueEar">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralEar">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneEar">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>گوش</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueEar">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralEar">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneEar">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>بینی</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueNose">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralNose">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneNose">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>بینی</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueNose">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralNose">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneNose">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>صورت</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueFace">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralFace">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneFace">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>صورت</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueFace">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralFace">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneFace">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>دهان</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueOral">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralOral">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneOral">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>دهان</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueOral">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralOral">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneOral">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>گردن</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueNeck">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralNeck">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneNeck">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>گردن</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueNeck">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralNeck">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneNeck">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <table class="damagedSecTbl">
-                    <tr>
-                        <th rowspan="1" class="verticalTH"> قفسه سینه</th>
-                        <th>قفسه سینه</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueThorax">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralThorax">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneThorax">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="damagedSecTbl">
+                        <tr>
+                            <th rowspan="1" class="verticalTH"> قفسه سینه</th>
+                            <th>قفسه سینه</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueThorax">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralThorax">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneThorax">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <table class="damagedSecTbl">
-                    <tr>
-                        <th rowspan="2" class="verticalTH"> شکم و لگن</th>
-                        <th>شکم</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissueAbdomen">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralAbdomen">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneAbdomen">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="damagedSecTbl">
+                        <tr>
+                            <th rowspan="2" class="verticalTH"> شکم و لگن</th>
+                            <th>شکم</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissueAbdomen">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralAbdomen">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneAbdomen">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>لگن</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="softtissuePelvic">
-                                        دیواره و بافت نرم
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="visceralPelvic">
-                                        احشاء
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="bonePelvic">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>لگن</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="softtissuePelvic">
+                                            دیواره و بافت نرم
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="visceralPelvic">
+                                            احشاء
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="bonePelvic">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <table class="damagedSecTbl">
-                    <tr>
-                        <th rowspan="1" class="verticalTH"> ستون فقرات و نخاع</th>
-                        <th>ستون فقرات ونخاع</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="cordSpine">
-                                        نخاع
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneSpine">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="damagedSecTbl">
+                        <tr>
+                            <th rowspan="1" class="verticalTH"> ستون فقرات و نخاع</th>
+                            <th>ستون فقرات ونخاع</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="cordSpine">
+                                            نخاع
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneSpine">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <table class="damagedSecTbl">
-                    <tr>
-                        <th rowspan="1" class="verticalTH"> اندام فوقانی</th>
-                        <th>اندام فوقانی</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="skinUpper">
-                                        پوست
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="tendonUpper">
-                                        عضلات و تاندون ها
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="vasclarUpper">
-                                        عروق
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="nerveUpper">
-                                        اعصاب
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="jointUpper">
-                                        مفاصل
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneUpper">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="damagedSecTbl">
+                        <tr>
+                            <th rowspan="1" class="verticalTH"> اندام فوقانی</th>
+                            <th>اندام فوقانی</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="skinUpper">
+                                            پوست
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="tendonUpper">
+                                            عضلات و تاندون ها
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="vasclarUpper">
+                                            عروق
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="nerveUpper">
+                                            اعصاب
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="jointUpper">
+                                            مفاصل
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneUpper">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-                <table class="damagedSecTbl">
-                    <tr>
-                        <th rowspan="1" class="verticalTH"> اندام تحتانی </th>
-                        <th>اندام تحتانی</th>
-                        <td>
-                            <div class="flexBox">
-                                <div class="row6">
-                                    <label>
-                                        <input type="checkbox" name="skinLower">
-                                        پوست
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="tendonLower">
-                                        عضلات و تاندون ها
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="vasclarLower">
-                                        عروق
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="nerveLower">
-                                        اعصاب
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="jointLower">
-                                        مفاصل
-                                    </label>
-                                    <label>
-                                        <input type="checkbox" name="boneLower">
-                                        ساختار استخوانی
-                                    </label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="damagedSecTbl">
+                        <tr>
+                            <th rowspan="1" class="verticalTH"> اندام تحتانی </th>
+                            <th>اندام تحتانی</th>
+                            <td>
+                                <div class="flexBox">
+                                    <div class="row6">
+                                        <label>
+                                            <input type="checkbox" name="skinLower">
+                                            پوست
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="tendonLower">
+                                            عضلات و تاندون ها
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="vasclarLower">
+                                            عروق
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="nerveLower">
+                                            اعصاب
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="jointLower">
+                                            مفاصل
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="boneLower">
+                                            ساختار استخوانی
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
             </div>
 
             <center>
@@ -2316,17 +2327,19 @@
         <div class="tabMainContainer" id="tabQuestionsE">
             <div class="questionE" id="qE0">
                 <fieldset>
-                    <legend> اقدامات انجام شده در اورژانس </legend>
-                    <table>
+                    <center>
+                        <h5 style="margin:0;padding:0;"> اقدامات انجام شده در اورژانس </h5>
+                    </center>
+                    <table class="damagedSecTbl">
                         <tr>
                             <th>لاین</th>
                             <td>
                                 <div class="flexBox">
-                                    <div class="row6">
+                                    <div class="row">
                                         <label>
                                             <input type="checkbox" name="priferalLine" id="priferalLine">
                                             محیطی
-                                            <span class="descriptionInline">در بیمار ترومایی دو لاین محیطی بزرگ(سبز یا خاکستری)گرفته شود.</span>
+                                            <!--<span class="descriptionInline"> دو لاین محیطی بزرگ(سبز یا خاکستری) نیاز است.</span>-->
                                         </label>
 
                                         <label>
@@ -2352,7 +2365,7 @@
                             </th>
                             <td>
                                 <div class="flexBox">
-                                    <div class="row6">
+                                    <div class="row">
                                         <label>
                                             <input type="checkbox" name="serumTherapyCristal" id="serumTherapyCristal">کریستالوئید
                                             <span class="descriptionInline">(نرمال سالین-رینگر)</span>
@@ -2412,7 +2425,7 @@
                             </th>
                             <td>
                                 <div class="flexBox">
-                                    <div class="row6">
+                                    <div >
                                         <label>
                                             <input type="checkbox" name="Hypotermia" id="Hypotermia">
                                             بیمار گرم نگه داشته شد
